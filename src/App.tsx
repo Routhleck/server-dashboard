@@ -15,9 +15,9 @@ function App() {
       setError(null);
 
       const [serversRes, statusRes, historyRes] = await Promise.all([
-        fetch('/server-dashboard/data/servers.json'),
-        fetch('/server-dashboard/data/status.json'),
-        fetch('/server-dashboard/data/history.json'),
+        fetch(`${import.meta.env.BASE_URL}data/servers.json`),
+        fetch(`${import.meta.env.BASE_URL}data/status.json`),
+        fetch(`${import.meta.env.BASE_URL}data/history.json`),
       ]);
 
       if (!serversRes.ok || !statusRes.ok || !historyRes.ok) {
