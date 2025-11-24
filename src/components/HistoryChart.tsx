@@ -4,14 +4,19 @@ import { HistoryPoint } from '../types';
 interface HistoryChartProps {
   serverName: string;
   history: HistoryPoint[];
+  isExpanded: boolean;
 }
 
-export function HistoryChart({ serverName, history }: HistoryChartProps) {
+export function HistoryChart({ serverName, history, isExpanded }: HistoryChartProps) {
+  if (!isExpanded) {
+    return null;
+  }
+
   if (!history || history.length === 0) {
     return (
-      <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-        <h3 className="text-lg font-bold text-white mb-4">{serverName} - 历史状态</h3>
-        <p className="text-gray-400 text-center py-8">暂无历史数据</p>
+      <div className="mt-4 bg-white/50 dark:bg-gray-800/50 rounded-lg p-6 shadow-lg animate-slideDown backdrop-blur-sm">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{serverName} - 历史状态</h3>
+        <p className="text-gray-600 dark:text-gray-400 text-center py-8">暂无历史数据</p>
       </div>
     );
   }
@@ -32,27 +37,30 @@ export function HistoryChart({ serverName, history }: HistoryChartProps) {
   const onlineCount = history.filter(p => p.status === 'online').length;
   const uptime = ((onlineCount / history.length) * 100).toFixed(2);
 
+  // 检测是否为深色模式
+  const isDark = document.documentElement.classList.contains('dark');
+
   return (
-    <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+    <div className="mt-4 bg-white/50 dark:bg-gray-800/50 rounded-lg p-6 shadow-lg animate-slideDown backdrop-blur-sm">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-bold text-white">{serverName} - 历史状态</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white">{serverName} - 历史状态</h3>
         <div className="text-sm">
-          <span className="text-gray-400">可用性: </span>
-          <span className="text-green-400 font-bold">{uptime}%</span>
+          <span className="text-gray-600 dark:text-gray-400">可用性: </span>
+          <span className="text-green-600 dark:text-green-400 font-bold">{uptime}%</span>
         </div>
       </div>
 
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+          <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#374151' : '#E5E7EB'} />
           <XAxis
             dataKey="time"
-            stroke="#9CA3AF"
+            stroke={isDark ? '#9CA3AF' : '#6B7280'}
             tick={{ fontSize: 12 }}
             interval="preserveStartEnd"
           />
           <YAxis
-            stroke="#9CA3AF"
+            stroke={isDark ? '#9CA3AF' : '#6B7280'}
             tick={{ fontSize: 12 }}
             domain={[0, 1]}
             ticks={[0, 1]}
@@ -60,10 +68,10 @@ export function HistoryChart({ serverName, history }: HistoryChartProps) {
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: '#1F2937',
-              border: '1px solid #374151',
+              backgroundColor: isDark ? '#1F2937' : '#FFFFFF',
+              border: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
               borderRadius: '0.5rem',
-              color: '#F3F4F6'
+              color: isDark ? '#F3F4F6' : '#111827'
             }}
             formatter={(value: number) => [value === 1 ? '在线' : '离线', '状态']}
           />
