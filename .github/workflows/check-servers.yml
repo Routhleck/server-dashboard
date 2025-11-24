@@ -1,0 +1,43 @@
+name: Check Servers Status
+
+on:
+  schedule:
+    # 每20分钟运行一次
+    - cron: '*/20 * * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Run server checks
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          cd scripts
+          node check-servers.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/data/status.json public/data/history.json
+          git diff --staged --quiet || git commit -m "Update server status $(date +'%Y-%m-%d %H:%M:%S')"
+          git push

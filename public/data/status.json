@@ -1,0 +1,47 @@
+{
+  "lastUpdate": "2025-11-24T00:00:00.000Z",
+  "servers": [
+    {
+      "name": "server2",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server3",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server4",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server6",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server8",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server9",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    },
+    {
+      "name": "server10",
+      "status": "unknown",
+      "responseTime": 0,
+      "lastChecked": "2025-11-24T00:00:00.000Z"
+    }
+  ]
+}
