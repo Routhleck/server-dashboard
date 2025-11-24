@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ServerCard } from './components/ServerCard';
-import { HistoryChart } from './components/HistoryChart';
+import { ServerModal } from './components/ServerModal';
 import { Server, StatusData, HistoryData } from './types';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const [historyData, setHistoryData] = useState<HistoryData>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [expandedServer, setExpandedServer] = useState<string | null>(null);
+  const [selectedServer, setSelectedServer] = useState<string | null>(null);
 
   // 检测系统主题
   useEffect(() => {
@@ -72,10 +72,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleServerClick = (serverName: string) => {
-    setExpandedServer(expandedServer === serverName ? null : serverName);
-  };
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleString('zh-CN', {
@@ -87,6 +83,10 @@ function App() {
       second: '2-digit',
     });
   };
+
+  // 获取选中的服务器信息
+  const selectedServerData = selectedServer ? servers.find(s => s.name === selectedServer) : null;
+  const selectedServerStatus = selectedServer ? statusData?.servers.find(s => s.name === selectedServer) : undefined;
 
   if (loading) {
     return (
@@ -119,33 +119,33 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {servers.map((server) => {
               const status = statusData?.servers.find(s => s.name === server.name);
-              const isExpanded = expandedServer === server.name;
 
               return (
-                <div key={server.name} className="col-span-1">
-                  <ServerCard
-                    server={server}
-                    status={status}
-                    isExpanded={isExpanded}
-                    onClick={() => handleServerClick(server.name)}
-                  />
-                  {isExpanded && (
-                    <HistoryChart
-                      serverName={server.name}
-                      history={historyData[server.name] || []}
-                      isExpanded={isExpanded}
-                    />
-                  )}
-                </div>
+                <ServerCard
+                  key={server.name}
+                  server={server}
+                  status={status}
+                  onClick={() => setSelectedServer(server.name)}
+                />
               );
             })}
           </div>
         </section>
 
         <footer className="mt-12 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>数据每20分钟更新一次 | 页面每5分钟自动刷新 | 点击服务器卡片查看历史数据</p>
+          <p>数据每20分钟更新一次 | 页面每5分钟自动刷新 | 点击服务器卡片查看详情</p>
         </footer>
       </div>
+
+      {/* Modal */}
+      {selectedServer && selectedServerData && (
+        <ServerModal
+          server={selectedServerData}
+          status={selectedServerStatus}
+          history={historyData[selectedServer] || []}
+          onClose={() => setSelectedServer(null)}
+        />
+      )}
     </div>
   );
 }
