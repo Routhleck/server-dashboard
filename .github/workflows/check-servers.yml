@@ -2,8 +2,8 @@ name: Check Servers Status
 
 on:
   schedule:
-    # 每20分钟运行一次
-    - cron: '*/20 * * * *'
+    # 每小时运行一次
+    - cron: '0 * * * *'
   workflow_dispatch: # 允许手动触发
 
 permissions:

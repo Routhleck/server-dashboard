@@ -133,7 +133,7 @@ function App() {
         </section>
 
         <footer className="mt-12 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>数据每20分钟更新一次 | 页面每5分钟自动刷新 | 点击服务器卡片查看详情</p>
+          <p>数据每小时更新一次 | 页面每5分钟自动刷新 | 点击服务器卡片查看详情</p>
         </footer>
       </div>
 
