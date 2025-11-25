@@ -39,10 +39,13 @@ function App() {
     try {
       setError(null);
 
+      // 使用 jsDelivr CDN 加速 GitHub 文件访问（国内友好）
+      const cdnBaseURL = 'https://cdn.jsdelivr.net/gh/Routhleck/server-dashboard@master/public/data/';
+
       const [serversRes, statusRes, historyRes] = await Promise.all([
-        fetch(`${import.meta.env.BASE_URL}data/servers.json`),
-        fetch(`${import.meta.env.BASE_URL}data/status.json`),
-        fetch(`${import.meta.env.BASE_URL}data/history.json`),
+        fetch(`${cdnBaseURL}servers.json`),
+        fetch(`${cdnBaseURL}status.json`),
+        fetch(`${cdnBaseURL}history.json`),
       ]);
 
       if (!serversRes.ok || !statusRes.ok || !historyRes.ok) {
