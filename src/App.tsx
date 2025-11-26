@@ -39,22 +39,41 @@ function App() {
     try {
       setError(null);
 
+      // 添加时间戳破坏缓存，确保获取最新数据
+      const timestamp = Date.now();
+
       // 使用 jsDelivr CDN 加速 GitHub 文件访问（国内友好）
+      // 添加缓存破坏参数，每小时更新一次缓存（向下取整到小时）
+      const cacheKey = Math.floor(timestamp / (60 * 60 * 1000));
       const cdnBaseURL = 'https://cdn.jsdelivr.net/gh/Routhleck/server-dashboard@master/public/data/';
 
-      const [serversRes, statusRes, historyRes] = await Promise.all([
-        fetch(`${cdnBaseURL}servers.json`),
-        fetch(`${cdnBaseURL}status.json`),
-        fetch(`${cdnBaseURL}history.json`),
+      // GitHub Raw URL 作为降级方案
+      const rawBaseURL = 'https://raw.githubusercontent.com/Routhleck/server-dashboard/master/public/data/';
+
+      const fetchWithFallback = async (filename: string) => {
+        // 首先尝试 CDN（带缓存破坏参数）
+        try {
+          const cdnRes = await fetch(`${cdnBaseURL}${filename}?v=${cacheKey}`);
+          if (cdnRes.ok) {
+            return await cdnRes.json();
+          }
+        } catch (cdnErr) {
+          console.warn(`CDN fetch failed for ${filename}, falling back to GitHub Raw:`, cdnErr);
+        }
+
+        // 如果 CDN 失败，降级到 GitHub Raw（带缓存破坏参数）
+        const rawRes = await fetch(`${rawBaseURL}${filename}?v=${timestamp}`);
+        if (!rawRes.ok) {
+          throw new Error(`Failed to fetch ${filename} from both CDN and GitHub Raw`);
+        }
+        return await rawRes.json();
+      };
+
+      const [serversData, statusDataRes, historyDataRes] = await Promise.all([
+        fetchWithFallback('servers.json'),
+        fetchWithFallback('status.json'),
+        fetchWithFallback('history.json'),
       ]);
-
-      if (!serversRes.ok || !statusRes.ok || !historyRes.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      const serversData = await serversRes.json();
-      const statusDataRes = await statusRes.json();
-      const historyDataRes = await historyRes.json();
 
       setServers(serversData);
       setStatusData(statusDataRes);
