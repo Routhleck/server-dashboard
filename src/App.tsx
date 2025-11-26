@@ -42,31 +42,31 @@ function App() {
       // 添加时间戳破坏缓存，确保获取最新数据
       const timestamp = Date.now();
 
-      // 使用 jsDelivr CDN 加速 GitHub 文件访问（国内友好）
+      // GitHub Raw URL（优先使用，保证数据最新）
+      const rawBaseURL = 'https://raw.githubusercontent.com/Routhleck/server-dashboard/master/public/data/';
+
+      // jsDelivr CDN 作为降级方案（国内访问友好）
       // 添加缓存破坏参数，每小时更新一次缓存（向下取整到小时）
       const cacheKey = Math.floor(timestamp / (60 * 60 * 1000));
       const cdnBaseURL = 'https://cdn.jsdelivr.net/gh/Routhleck/server-dashboard@master/public/data/';
 
-      // GitHub Raw URL 作为降级方案
-      const rawBaseURL = 'https://raw.githubusercontent.com/Routhleck/server-dashboard/master/public/data/';
-
       const fetchWithFallback = async (filename: string) => {
-        // 首先尝试 CDN（带缓存破坏参数）
+        // 优先尝试 GitHub Raw（带缓存破坏参数），保证获取最新数据
         try {
-          const cdnRes = await fetch(`${cdnBaseURL}${filename}?v=${cacheKey}`);
-          if (cdnRes.ok) {
-            return await cdnRes.json();
+          const rawRes = await fetch(`${rawBaseURL}${filename}?v=${timestamp}`);
+          if (rawRes.ok) {
+            return await rawRes.json();
           }
-        } catch (cdnErr) {
-          console.warn(`CDN fetch failed for ${filename}, falling back to GitHub Raw:`, cdnErr);
+        } catch (rawErr) {
+          console.warn(`GitHub Raw fetch failed for ${filename}, falling back to CDN:`, rawErr);
         }
 
-        // 如果 CDN 失败，降级到 GitHub Raw（带缓存破坏参数）
-        const rawRes = await fetch(`${rawBaseURL}${filename}?v=${timestamp}`);
-        if (!rawRes.ok) {
-          throw new Error(`Failed to fetch ${filename} from both CDN and GitHub Raw`);
+        // 如果 GitHub Raw 失败，降级到 jsDelivr CDN
+        const cdnRes = await fetch(`${cdnBaseURL}${filename}?v=${cacheKey}`);
+        if (!cdnRes.ok) {
+          throw new Error(`Failed to fetch ${filename} from both GitHub Raw and CDN`);
         }
-        return await rawRes.json();
+        return await cdnRes.json();
       };
 
       const [serversData, statusDataRes, historyDataRes] = await Promise.all([
