@@ -1,53 +1,53 @@
 {
-  "lastUpdate": "2025-11-28T20:14:38.813Z",
+  "lastUpdate": "2025-11-28T21:12:01.600Z",
   "servers": [
     {
       "name": "server2",
-      "status": "online",
-      "responseTime": 2513,
-      "lastChecked": "2025-11-28T20:14:38.708Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-11-28T21:11:59.560Z"
     },
     {
       "name": "server3",
       "status": "online",
-      "responseTime": 2470,
-      "lastChecked": "2025-11-28T20:14:38.669Z"
+      "responseTime": 2564,
+      "lastChecked": "2025-11-28T21:12:01.598Z"
     },
     {
       "name": "server4",
       "status": "online",
-      "responseTime": 2611,
-      "lastChecked": "2025-11-28T20:14:38.811Z"
+      "responseTime": 2512,
+      "lastChecked": "2025-11-28T21:12:01.546Z"
     },
     {
       "name": "server6",
-      "status": "online",
-      "responseTime": 2566,
-      "lastChecked": "2025-11-28T20:14:38.766Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-11-28T21:11:59.850Z"
     },
     {
       "name": "server7",
       "status": "online",
-      "responseTime": 2340,
-      "lastChecked": "2025-11-28T20:14:38.541Z"
+      "responseTime": 2517,
+      "lastChecked": "2025-11-28T21:12:01.552Z"
     },
     {
       "name": "server8",
-      "status": "offline",
-      "responseTime": 0,
-      "lastChecked": "2025-11-28T20:14:36.715Z"
+      "status": "online",
+      "responseTime": 2384,
+      "lastChecked": "2025-11-28T21:12:01.419Z"
     },
     {
       "name": "server9",
-      "status": "online",
-      "responseTime": 2369,
-      "lastChecked": "2025-11-28T20:14:38.570Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-11-28T21:11:59.555Z"
     },
     {
       "name": "server10",
-      "status": "online",
-      "responseTime": 2375,
-      "lastChecked": "2025-11-28T20:14:38.577Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-11-28T21:11:59.535Z"
     }
   ]
 }
