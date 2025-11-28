@@ -429,6 +429,11 @@
       "timestamp": "2025-11-28T08:19:35.186Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-11-28T09:15:07.734Z",
+      "status": "online",
+      "responseTime": 2359
     }
   ],
   "server3": [
@@ -861,6 +866,11 @@
       "timestamp": "2025-11-28T08:19:37.078Z",
       "status": "online",
       "responseTime": 2471
+    },
+    {
+      "timestamp": "2025-11-28T09:15:05.866Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server4": [
@@ -1293,6 +1303,11 @@
       "timestamp": "2025-11-28T08:19:37.131Z",
       "status": "online",
       "responseTime": 2523
+    },
+    {
+      "timestamp": "2025-11-28T09:15:05.846Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server6": [
@@ -1723,6 +1738,11 @@
     },
     {
       "timestamp": "2025-11-28T08:19:35.177Z",
+      "status": "offline",
+      "responseTime": 0
+    },
+    {
+      "timestamp": "2025-11-28T09:15:05.844Z",
       "status": "offline",
       "responseTime": 0
     }
@@ -2157,6 +2177,11 @@
       "timestamp": "2025-11-28T08:19:37.233Z",
       "status": "online",
       "responseTime": 2624
+    },
+    {
+      "timestamp": "2025-11-28T09:15:07.622Z",
+      "status": "online",
+      "responseTime": 2242
     }
   ],
   "server9": [
@@ -2589,6 +2614,11 @@
       "timestamp": "2025-11-28T08:19:35.193Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-11-28T09:15:07.803Z",
+      "status": "online",
+      "responseTime": 2422
     }
   ],
   "server10": [
@@ -3021,6 +3051,11 @@
       "timestamp": "2025-11-28T08:19:37.363Z",
       "status": "online",
       "responseTime": 2754
+    },
+    {
+      "timestamp": "2025-11-28T09:15:07.581Z",
+      "status": "online",
+      "responseTime": 2200
     }
   ],
   "server7": [
@@ -3443,6 +3478,11 @@
       "timestamp": "2025-11-28T08:19:37.144Z",
       "status": "online",
       "responseTime": 2536
+    },
+    {
+      "timestamp": "2025-11-28T09:15:07.610Z",
+      "status": "online",
+      "responseTime": 2230
     }
   ]
 }
