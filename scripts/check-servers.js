@@ -21,26 +21,37 @@ const servers = JSON.parse(
   )
 );
 
-// SSH 连接测试函数
-async function checkServer(server) {
+// 配置参数
+const MAX_RETRIES = 3; // 重试次数（总共4次尝试）
+const RETRY_DELAY = 5000; // 重试间隔（毫秒）
+const CONNECTION_TIMEOUT = 20000; // 单次连接超时（毫秒）
+
+// 延迟函数
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// SSH 单次连接尝试
+async function attemptConnection(server, attemptNum, totalAttempts) {
   return new Promise((resolve) => {
     const conn = new Client();
     const startTime = Date.now();
     let resolved = false;
+
+    console.log(`[${server.name}] 尝试 ${attemptNum}/${totalAttempts}...`);
 
     // 设置超时
     const timeout = setTimeout(() => {
       if (!resolved) {
         resolved = true;
         conn.end();
+        const elapsed = Date.now() - startTime;
+        console.log(`[${server.name}] 尝试 ${attemptNum}/${totalAttempts} - 超时 (${elapsed}ms)`);
         resolve({
-          name: server.name,
-          status: 'offline',
+          success: false,
+          reason: 'timeout',
           responseTime: 0,
-          lastChecked: new Date().toISOString(),
         });
       }
-    }, 10000); // 10秒超时
+    }, CONNECTION_TIMEOUT);
 
     conn
       .on('ready', () => {
@@ -49,11 +60,10 @@ async function checkServer(server) {
           clearTimeout(timeout);
           const responseTime = Date.now() - startTime;
           conn.end();
+          console.log(`[${server.name}] 尝试 ${attemptNum}/${totalAttempts} - 成功! (${responseTime}ms)`);
           resolve({
-            name: server.name,
-            status: 'online',
+            success: true,
             responseTime,
-            lastChecked: new Date().toISOString(),
           });
         }
       })
@@ -61,12 +71,12 @@ async function checkServer(server) {
         if (!resolved) {
           resolved = true;
           clearTimeout(timeout);
-          console.error(`Error connecting to ${server.name}:`, err.message);
+          const elapsed = Date.now() - startTime;
+          console.log(`[${server.name}] 尝试 ${attemptNum}/${totalAttempts} - 错误: ${err.message} (${elapsed}ms)`);
           resolve({
-            name: server.name,
-            status: 'offline',
+            success: false,
+            reason: err.message,
             responseTime: 0,
-            lastChecked: new Date().toISOString(),
           });
         }
       })
@@ -75,9 +85,49 @@ async function checkServer(server) {
         port: server.port,
         username: sshUsername,
         privateKey,
-        readyTimeout: 10000,
+        readyTimeout: CONNECTION_TIMEOUT,
       });
   });
+}
+
+// SSH 连接测试函数（带重试）
+async function checkServer(server) {
+  const totalAttempts = MAX_RETRIES + 1;
+  const overallStartTime = Date.now();
+
+  console.log(`\n检查服务器: ${server.name} (${server.ip}:${server.port})`);
+
+  for (let attempt = 1; attempt <= totalAttempts; attempt++) {
+    const result = await attemptConnection(server, attempt, totalAttempts);
+
+    // 任意一次成功即认为在线
+    if (result.success) {
+      const totalTime = Date.now() - overallStartTime;
+      console.log(`[${server.name}] ✓ 最终状态: 在线 (总耗时: ${totalTime}ms, 响应时间: ${result.responseTime}ms)\n`);
+      return {
+        name: server.name,
+        status: 'online',
+        responseTime: result.responseTime,
+        lastChecked: new Date().toISOString(),
+      };
+    }
+
+    // 如果不是最后一次尝试，等待后重试
+    if (attempt < totalAttempts) {
+      console.log(`[${server.name}] 等待 ${RETRY_DELAY/1000} 秒后重试...`);
+      await delay(RETRY_DELAY);
+    }
+  }
+
+  // 所有尝试都失败
+  const totalTime = Date.now() - overallStartTime;
+  console.log(`[${server.name}] ✗ 最终状态: 离线 (总耗时: ${totalTime}ms, ${totalAttempts} 次尝试全部失败)\n`);
+  return {
+    name: server.name,
+    status: 'offline',
+    responseTime: 0,
+    lastChecked: new Date().toISOString(),
+  };
 }
 
 // 主函数
