@@ -1,53 +1,53 @@
 {
-  "lastUpdate": "2025-12-01T08:21:48.866Z",
+  "lastUpdate": "2025-12-01T09:21:12.557Z",
   "servers": [
     {
       "name": "server2",
       "status": "online",
-      "responseTime": 2558,
-      "lastChecked": "2025-12-01T08:21:48.441Z"
+      "responseTime": 2420,
+      "lastChecked": "2025-12-01T09:21:12.334Z"
     },
     {
       "name": "server3",
       "status": "online",
-      "responseTime": 2160,
-      "lastChecked": "2025-12-01T08:21:48.048Z"
+      "responseTime": 2633,
+      "lastChecked": "2025-12-01T09:21:12.551Z"
     },
     {
       "name": "server4",
-      "status": "online",
-      "responseTime": 2355,
-      "lastChecked": "2025-12-01T08:21:48.243Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-12-01T09:21:10.482Z"
     },
     {
       "name": "server6",
-      "status": "online",
-      "responseTime": 2162,
-      "lastChecked": "2025-12-01T08:21:48.050Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-12-01T09:21:10.449Z"
     },
     {
       "name": "server7",
       "status": "online",
-      "responseTime": 2172,
-      "lastChecked": "2025-12-01T08:21:48.061Z"
+      "responseTime": 2453,
+      "lastChecked": "2025-12-01T09:21:12.372Z"
     },
     {
       "name": "server8",
-      "status": "online",
-      "responseTime": 2974,
-      "lastChecked": "2025-12-01T08:21:48.863Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-12-01T09:21:10.431Z"
     },
     {
       "name": "server9",
-      "status": "offline",
-      "responseTime": 0,
-      "lastChecked": "2025-12-01T08:21:46.401Z"
+      "status": "online",
+      "responseTime": 2634,
+      "lastChecked": "2025-12-01T09:21:12.554Z"
     },
     {
       "name": "server10",
-      "status": "online",
-      "responseTime": 2865,
-      "lastChecked": "2025-12-01T08:21:48.755Z"
+      "status": "offline",
+      "responseTime": 0,
+      "lastChecked": "2025-12-01T09:21:10.482Z"
     }
   ]
 }
