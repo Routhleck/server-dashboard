@@ -1,53 +1,53 @@
 {
-  "lastUpdate": "2025-12-06T18:18:20.365Z",
+  "lastUpdate": "2025-12-06T19:10:33.745Z",
   "servers": [
     {
       "name": "server2",
       "status": "online",
-      "responseTime": 1754,
-      "lastChecked": "2025-12-06T18:18:09.847Z"
+      "responseTime": 2083,
+      "lastChecked": "2025-12-06T19:10:33.543Z"
     },
     {
       "name": "server3",
       "status": "online",
-      "responseTime": 1731,
-      "lastChecked": "2025-12-06T18:18:15.197Z"
+      "responseTime": 2109,
+      "lastChecked": "2025-12-06T19:10:17.153Z"
     },
     {
       "name": "server4",
       "status": "online",
-      "responseTime": 1724,
-      "lastChecked": "2025-12-06T18:18:15.160Z"
+      "responseTime": 2319,
+      "lastChecked": "2025-12-06T19:10:17.365Z"
     },
     {
       "name": "server6",
       "status": "online",
-      "responseTime": 1566,
-      "lastChecked": "2025-12-06T18:18:20.363Z"
+      "responseTime": 2144,
+      "lastChecked": "2025-12-06T19:10:22.647Z"
     },
     {
       "name": "server7",
       "status": "online",
-      "responseTime": 1763,
-      "lastChecked": "2025-12-06T18:18:09.863Z"
+      "responseTime": 2291,
+      "lastChecked": "2025-12-06T19:10:17.337Z"
     },
     {
       "name": "server8",
       "status": "online",
-      "responseTime": 1759,
-      "lastChecked": "2025-12-06T18:18:09.860Z"
+      "responseTime": 2301,
+      "lastChecked": "2025-12-06T19:10:33.743Z"
     },
     {
       "name": "server9",
       "status": "online",
-      "responseTime": 1752,
-      "lastChecked": "2025-12-06T18:18:09.853Z"
+      "responseTime": 2119,
+      "lastChecked": "2025-12-06T19:10:17.167Z"
     },
     {
       "name": "server10",
       "status": "online",
-      "responseTime": 1749,
-      "lastChecked": "2025-12-06T18:18:09.852Z"
+      "responseTime": 2330,
+      "lastChecked": "2025-12-06T19:10:17.378Z"
     }
   ]
 }
