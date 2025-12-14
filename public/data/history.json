@@ -2259,6 +2259,11 @@
       "timestamp": "2025-12-14T22:12:37.303Z",
       "status": "online",
       "responseTime": 2666
+    },
+    {
+      "timestamp": "2025-12-14T23:12:47.190Z",
+      "status": "online",
+      "responseTime": 2198
     }
   ],
   "server3": [
@@ -4521,6 +4526,11 @@
       "timestamp": "2025-12-14T22:12:37.334Z",
       "status": "online",
       "responseTime": 2693
+    },
+    {
+      "timestamp": "2025-12-14T23:12:47.023Z",
+      "status": "online",
+      "responseTime": 2027
     }
   ],
   "server4": [
@@ -6783,6 +6793,11 @@
       "timestamp": "2025-12-14T22:12:37.325Z",
       "status": "online",
       "responseTime": 2684
+    },
+    {
+      "timestamp": "2025-12-14T23:12:47.141Z",
+      "status": "online",
+      "responseTime": 2144
     }
   ],
   "server6": [
@@ -9045,6 +9060,11 @@
       "timestamp": "2025-12-14T22:12:37.283Z",
       "status": "online",
       "responseTime": 2640
+    },
+    {
+      "timestamp": "2025-12-14T23:12:47.034Z",
+      "status": "online",
+      "responseTime": 2037
     }
   ],
   "server8": [
@@ -11305,6 +11325,11 @@
     },
     {
       "timestamp": "2025-12-14T22:14:09.696Z",
+      "status": "offline",
+      "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-14T23:14:20.046Z",
       "status": "offline",
       "responseTime": 0
     }
@@ -13569,6 +13594,11 @@
       "timestamp": "2025-12-14T22:14:09.696Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-14T23:14:20.046Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server10": [
@@ -15831,6 +15861,11 @@
       "timestamp": "2025-12-14T22:14:09.696Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-14T23:14:20.046Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server7": [
@@ -18081,6 +18116,11 @@
     },
     {
       "timestamp": "2025-12-14T22:14:09.695Z",
+      "status": "offline",
+      "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-14T23:14:20.045Z",
       "status": "offline",
       "responseTime": 0
     }
