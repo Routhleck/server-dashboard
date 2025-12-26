@@ -1,11 +1,6 @@
 {
   "server2": [
     {
-      "timestamp": "2025-12-03T04:23:01.450Z",
-      "status": "online",
-      "responseTime": 2129
-    },
-    {
       "timestamp": "2025-12-03T05:14:44.196Z",
       "status": "online",
       "responseTime": 2089
@@ -2519,14 +2514,14 @@
       "timestamp": "2025-12-25T23:14:58.183Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-26T01:08:25.698Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server3": [
-    {
-      "timestamp": "2025-12-03T04:22:50.531Z",
-      "status": "online",
-      "responseTime": 2184
-    },
     {
       "timestamp": "2025-12-03T05:14:38.981Z",
       "status": "online",
@@ -5041,14 +5036,14 @@
       "timestamp": "2025-12-25T23:14:58.183Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-26T01:08:25.698Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server4": [
-    {
-      "timestamp": "2025-12-03T04:22:50.667Z",
-      "status": "online",
-      "responseTime": 2321
-    },
     {
       "timestamp": "2025-12-03T05:14:38.884Z",
       "status": "online",
@@ -7563,14 +7558,14 @@
       "timestamp": "2025-12-25T23:14:58.183Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-26T01:08:25.699Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server6": [
-    {
-      "timestamp": "2025-12-03T04:22:50.706Z",
-      "status": "online",
-      "responseTime": 2359
-    },
     {
       "timestamp": "2025-12-03T05:14:38.806Z",
       "status": "online",
@@ -10085,14 +10080,14 @@
       "timestamp": "2025-12-25T23:14:58.183Z",
       "status": "offline",
       "responseTime": 0
+    },
+    {
+      "timestamp": "2025-12-26T01:08:25.699Z",
+      "status": "offline",
+      "responseTime": 0
     }
   ],
   "server8": [
-    {
-      "timestamp": "2025-12-03T04:23:05.223Z",
-      "status": "offline",
-      "responseTime": 0
-    },
     {
       "timestamp": "2025-12-03T05:14:44.247Z",
       "status": "online",
@@ -12607,14 +12602,14 @@
       "timestamp": "2025-12-25T23:13:25.337Z",
       "status": "online",
       "responseTime": 2222
+    },
+    {
+      "timestamp": "2025-12-26T01:06:53.070Z",
+      "status": "online",
+      "responseTime": 2439
     }
   ],
   "server9": [
-    {
-      "timestamp": "2025-12-03T04:22:50.715Z",
-      "status": "online",
-      "responseTime": 2366
-    },
     {
       "timestamp": "2025-12-03T05:14:39.528Z",
       "status": "online",
@@ -15129,14 +15124,14 @@
       "timestamp": "2025-12-25T23:13:25.151Z",
       "status": "online",
       "responseTime": 2035
+    },
+    {
+      "timestamp": "2025-12-26T01:06:53.173Z",
+      "status": "online",
+      "responseTime": 2541
     }
   ],
   "server10": [
-    {
-      "timestamp": "2025-12-03T04:22:50.619Z",
-      "status": "online",
-      "responseTime": 2269
-    },
     {
       "timestamp": "2025-12-03T05:14:39.610Z",
       "status": "online",
@@ -17651,14 +17646,14 @@
       "timestamp": "2025-12-25T23:13:25.175Z",
       "status": "online",
       "responseTime": 2060
+    },
+    {
+      "timestamp": "2025-12-26T01:06:53.048Z",
+      "status": "online",
+      "responseTime": 2415
     }
   ],
   "server7": [
-    {
-      "timestamp": "2025-12-03T04:22:50.752Z",
-      "status": "online",
-      "responseTime": 2405
-    },
     {
       "timestamp": "2025-12-03T05:14:38.784Z",
       "status": "online",
@@ -20173,6 +20168,11 @@
       "timestamp": "2025-12-25T23:13:25.161Z",
       "status": "online",
       "responseTime": 2046
+    },
+    {
+      "timestamp": "2025-12-26T01:06:53.076Z",
+      "status": "online",
+      "responseTime": 2445
     }
   ]
 }
